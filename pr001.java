@@ -23,21 +23,34 @@ class pr001 {
 		//Вещественные типы
 		float f; //32 бита
 		double dd; //64 бита
+		sh = b;
+		b = (byte)sh;
+		dd = 1.5;
+		intg = (int)dd;
+		dd = (double)10/3;
+		f = intg;
+		System.out.println(intg + "   " + dd);
 
 		//Символьный тип данных
-		char ch;//16 бит
+		char ch; //16 бит
 		ch = 'А';
 		ch++; ++ch;
+		ch = (char)48;
 		for (int i=0; i<68; i++)
 			System.out.print(ch++ + " ");
 		System.out.println();
+		ch = '0';
+		System.out.println(((int)ch));
 
 		//Логический тип
-		boolean bool;
+		boolean bool, bool2 = false;
 		bool = true;
-		bool = false;
-	
-
+		System.out.println(!bool);
+		System.out.println(bool && bool2);
+		System.out.println(bool || bool2);
+		System.out.println(bool ^ bool2);
+		System.out.println("Перевод строки\n" + "Табуляция\t" + "\"Кавычки в строке\"" + (!bool & (bool2 | bool)));
+		ch = '\'';
 
 
 	}
