@@ -46,6 +46,41 @@ class pr002 {
 		else
 			System.out.println("bool равен false");
 
+		System.out.println("\n");
+		//Оператор for
+		for(int i=0, j=10; i<j; i++, j--)
+			System.out.println("i и j: " + i + " " + j);
+
+		for(int i=0; i<10;) {
+			System.out.println("Проход №" + i);
+			i++;
+		}
+
+		//Бесконечный цикл
+		//for(;;);
+
+		int sum=0;
+		for(int i=1; i<5; sum += i++);
+		System.out.println("\nСумма равна: " + sum);
+
+		System.out.println("\n");
+		//цикл while
+		char ch1='А';
+		while(ch1 <= 'я') {
+			System.out.print(ch1 + " ");
+			ch1++;
+		}
+		System.out.println();
+		System.out.println(((int) 'е') + " " + ((int) 'Ё') + " " + ((int) 'ё'));
+
+		System.out.println("\n");
+		//цикл do while
+		char ch2;
+		do {
+			System.out.println("Введите символ и нажмите \"RETURN\":  ");
+			ch2 = (char) System.in.read();
+		} while(ch2 != 'q');
+		
 
 	}
 
