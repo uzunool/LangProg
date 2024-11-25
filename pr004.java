@@ -11,72 +11,77 @@ class Block {
 	}
 	public boolean sameBlock(Block ob) {
 		if((ob.a == a) & (ob.b == b) & (ob.c == c))
-			return true;
-		else
-			return false;
-	}
-	public boolean sameV(Block ob) {
-		if(ob.v == v)
-			return true;
-		else
-			return false;
-	}
+                        return true;
+                else
+                        return false;
+        }
+        public boolean sameV(Block ob) {
+        if(ob.v == v)
+                return true;
+        else
+                return false;
+
+        }
 }
+
 class ByValue {
-	void noChange(int i, int j) {
-		i = i + j;
-		j = -j;
-	}
+        void noChange(int i, int j) {
+                i = i + j;
+                j = -j;
+        }
 }
 class ByRef {
-	int a, b;
-	ByRef(int i, int j) {
-		a = i;
-		b = j;
-	}
-	void change(ByRef ob) {
-		ob.a = ob.a + ob.b;
-		ob.b = -ob.b;
-	}
+        int a, b;
+        ByRef(int i, int j) {
+                a = i;
+                b = j;
+        }
+        void change(ByRef ob) {
+                ob.a = ob.a + ob.b;
+                ob.b = -ob.b;
+        }
 }
 class ErrorMsg {
-	String[] msgs = {
-		"Ошибка вывода",
+        String[] msgs = {
+                "Ошибка вывода",
+
 		"Ошибка ввода",
-		"Переполнение диска",
-		"Выход индекса за границы массива"
-	};
-	//Пример возврата объекта в виде строки
-	String getErrorMsg(int i) {
-		if(i >= 0 & i < msgs.length)
-			return msgs[i];
-		else
-			return "Неизвестная ошибка";
-	}
+                "Переполнение диска",
+                "Выход индекса за границы массива"
+        };
+        //Пример возврата объекта в виде строки
+        String getErrorMsg(int i) {
+                if(i >= 0 & i < msgs.length)
+                        return msgs[i];
+                else
+                        return "Неизвестная ошибка";
+        }
 }
 class Err {
-	String msg;
-	int severity;
-	Err(String m, int s) {
-		msg = m;
-		severity = s;
-	}
+        String msg;
+        int severity;
+        Err(String m, int s) {
+                msg = m;
+                severity = s;
+        }
 
 }
 class ErrorInfo {
-	String[] msgs = {
-		"Ошибка вывода",
+        String[] msgs = {
+                "Ошибка вывода",
                 "Ошибка ввода",
                 "Переполнение диска",
-                "Выход индекса за границы массива"
-	};
-	int[] howBad = {3,3,2,4};
+		"Выход индекса за границы массива"
+        };
+        int[] howBad = {3,3,2,4};
 	Err getErrorInfo(int i) {
-		if(i >= 0 & i< msgs.length)
+		if(i >= 0 & i < msgs.length)
 			return new Err(msgs[i], howBad[i]);
-		else
-			return new Err("Неизвестная ошибка", 0);
+                else
+                	return new Err("Неизвестная ошибка", 0);
+        	
 	}
+	
 }
 class pr004 {
 	public static void main(String[] args) {
