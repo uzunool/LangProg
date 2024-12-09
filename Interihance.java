@@ -1,6 +1,9 @@
-class TwoDShape {
+abstract class TwoDShape {
 	private double width;
 	private double height;
+	final int CONST1 = 1;
+	final int CONST2 = 2;
+	final int CONST3 = 3;
 	String name;
 	int i = 100;
 	TwoDShape(double w, double h) {
@@ -41,10 +44,15 @@ class TwoDShape {
 		return name;
 	}
 	*/
+	/*
 	double area() {
 		System.out.println("Метод должен быть переопределен!");
 		return 0.0;
 	}
+	*/
+	//Метод, который обязательно должен переопределиться внутри подкласса
+	abstract double area();
+	abstract void getMsg();
 	
 }
 class Triangle extends TwoDShape {
@@ -70,6 +78,9 @@ class Triangle extends TwoDShape {
 		return super.name;
 	}
 	*/
+	void getMsg() {
+		System.out.println("Сообщение от треугольника");
+	}
 }
 class ColorTriangle extends Triangle {
 	String color;
@@ -80,6 +91,13 @@ class ColorTriangle extends Triangle {
 	}
 	void showColor() {
 		System.out.println("Цвет: " + color);
+	}
+/*	void getMsg() {
+                System.out.println("Сообщение от цветного треугольника");
+        }
+*/
+	public String toString() {
+		return "Цветной треугольник",
 	}
 }
 class Rectangle extends TwoDShape {
@@ -97,17 +115,31 @@ class Rectangle extends TwoDShape {
 			return true;
 		return false;
 	}
+	final void getMsg() {
+		System.out.println("Сообщение от прямоугольника");
+	}
 }
+//Запрет наследования класса х
+final class X {
+	int x = 10;
+}
+/*
+class Y extends x{
+        int y = 20;
+}
+*/
+
 class Interihance {
 	public static void main(String[] args) {
-		TwoDShape fig1 = new TwoDShape(20.0, 30.0);
+		
+		TwoDShape fig1; //= new TwoDShape(20.0, 30.0); - нельзя создать объект абстрактного класса
 		Triangle t1 = new Triangle("Закрашенный", 4.5, 7.0);
 		ColorTriangle t2 = new ColorTriangle("Синий", "Контурный", 3.5, 8.0);
 		Rectangle r1 = new Rectangle("Сплошная линия", 5.0, 5.0);
 		Rectangle r2 = new Rectangle("Пунктирная линия", 5.0, 7.0);
 		System.out.println("Информация об объектах");
-		System.out.println("fig1: " + fig1.name);
-		fig1.showDim();
+		//System.out.println("fig1: " + fig1.name);
+		//fig1.showDim();
 		System.out.println("t1: " + t1.name);
 		t1.showStyle();
 		System.out.println("Площадь: " + t1.area());
@@ -123,15 +155,17 @@ class Interihance {
 		//Совместимость переменых родственных классов
 		//Переменная суперкласса может ссылаться на объект любого подкласса
 		System.out.println();
-		System.out.println("Ширина двумерной фигуры fig1: " + fig1.getWidth());
+		//System.out.println("Ширина двумерной фигуры fig1: " + fig1.getWidth());
 		//При указании на объект суперкласса выполняется метод супекласса
-		fig1.area();
+		//fig1.area();
+		//System.out.println("Имя фигуры: " + fig1.name);
 
 		fig1 = t1;
 		System.out.println("Ширина треугольника, на который сссылаетсяfig1: " + fig1.getWidth());
 		//При указании на объект подкласса "Треуогольник" выполняется вычисление площади для треугольников
 		System.out.println("Площадь треугольника: " + fig1.area());
 		System.out.println("Имя фигуры: " + fig1.name);
+		fig1.getMsg();
 
 		fig1 = r1;
 		System.out.println("Ширина прямоугольника, на который ссылаетсяfig1: " + fig1.getWidth());
@@ -144,6 +178,10 @@ class Interihance {
 		t2.showColor();
 		System.out.println("Площадь цветного треугольника: " + fig1.area());
 		System.out.println("Имя фигуры: " + fig1.name);
+		fig1.getMsg();
+		System.out.println((fig1.CONST1 + fig1.CONST2 + fig1.CONST3));
+		//Изменить переменную финал нельзя
+		//fig1.CONST1 = 333;
 
 		//Доступ к членам подкласса для ссылочных переменных суперкласса закрыт: 
 		//System.out.println(fig1.style);
@@ -158,6 +196,18 @@ class Interihance {
 		System.out.println(t1.width); //Подкласс имеет доступ к переменным и методам суперкласс
 		System.out.println(fig1.style); //Суперкласс не имеет доступа к переменным описанным в подклассе
 		*/
+		
+		//Использование класса object
+		Object obj1;
+	
+		System.out.println(t1.getClass());
+		System.out.println(t2.getClass());
+		System.out.println("объекты t1 и t2 эквивалентны: " + t1.equals(t2));
+		System.out.println("Хэш-код для t1 и t2: " + t1.hashCode() + " " + t2.hashCode());
+		System.out.println("Описания для t1 и t2: " + t1.toString() + " " + t2.toString());
+		t1 = t2;
+		System.out.println("объекты t1 и t2 эквивалентны: " + t1.equals(t2));
+
 
 	}
 }
